@@ -6,6 +6,8 @@
 package kruispunt;
 
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Tiko Huizinga - s4460898
@@ -14,25 +16,27 @@ import java.util.Random;
 public class Auto implements Runnable{
     private final int ID;
     private Random r1;
+    private Zone [] zones;
     
     
     
-    public Auto(int id){
+    public Auto(int id, Zone rechts, Zone rechtdoor, Zone links){
         ID = id;
+        r1 = new Random();
+        zones = new Zone [] {rechts, rechtdoor, links};
+        
     }
     
     private int geefRichting(){
-        return r1.nextInt() % 3;
+        System.out.println(r1.nextInt(3));
+        return r1.nextInt(3);
     }
     
-    private void reserveerZones(){
-        
-    }
 
     @Override
     public void run() {
         while(true){
-            
+            //TODO run maken
         }
     }
     
