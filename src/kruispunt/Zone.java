@@ -5,6 +5,9 @@
  */
 package kruispunt;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @author Tiko Huizinga - s4460898
  * @author Conny Blach - s4329872
@@ -22,7 +25,15 @@ public class Zone {
      * reserveren.
      */
     public synchronized void rijOp(){
+        while(bezet){
+            try {
+                wait();
+            } catch (InterruptedException ex) {
+                System.out.println("Wachten geïnterrupt");
+            }
+        }
         bezet = true;
+        
         
     }
     
@@ -31,10 +42,15 @@ public class Zone {
      */
     public synchronized void rijAf(){
         bezet = false;
+        notifyAll();
     }
     
     public Boolean getBezet(){
         return bezet;
+    }
+    
+    public int getID(){
+        return this.ID;
     }
     
 }
