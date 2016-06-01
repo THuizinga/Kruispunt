@@ -23,7 +23,11 @@ package kruispunt;
  */
 
 public class Main {
-    
+    Thread t1, t2, t3, t4;
+    /**
+     * Hier worden alle auto's zones en threads aangemaakt.
+     * Daarna wordt de simulatie gestart.
+     */
     public Main(){
         Zone z0 = new Zone(0);
         Zone z1 = new Zone(1);
@@ -31,12 +35,30 @@ public class Main {
         Zone z3 = new Zone(3);
         
         Auto a0 = new Auto(0, z0, z1, z2);
-        Auto a1 = new Auto(0, z1, z2, z3);
-        Auto a2 = new Auto(0, z2, z3, z0);
-        Auto a3 = new Auto(0, z3, z0, z1);
+        Auto a1 = new Auto(1, z1, z2, z3);
+        Auto a2 = new Auto(2, z2, z3, z0);
+        Auto a3 = new Auto(3, z3, z0, z1);
+        
+        t1 = new Thread(a0);
+        t2 = new Thread(a1);
+        t3 = new Thread(a2);
+        t4 = new Thread(a3);
+        
+        startSim();
+        
     }
     
-    
+    /**
+     * Start de simulatie. Dit gebeurt niet in de constructor omdat 
+     * dat gevaarlijk is.
+     */
+    private void startSim(){
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+
+    }
     /**
      * @param args the command line arguments
      */
