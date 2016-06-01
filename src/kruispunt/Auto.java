@@ -73,7 +73,7 @@ public class Auto implements Runnable {
                 Thread.sleep(r1.nextInt(3000) + 3000);
                 for (int i = 0; i <= richting; i++) {
                     nodig[i].rijOp();
-                    System.out.println("Auto " + this + " reserveert: " + nodig[i]);
+                    //System.out.println("Auto " + this + " reserveert: " + nodig[i]);
                 }
                 for (int i = 0; i <= richting; i++) {
                     nodig[i].rijAf();
